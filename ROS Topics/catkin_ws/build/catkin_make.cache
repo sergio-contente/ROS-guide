@@ -1,0 +1,2 @@
+publisher_pkg
+-DCATKIN_DEVEL_PREFIX=/home/contente/Desktop/ThundeRatz/ROS-guide/ROS Topics/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/contente/Desktop/ThundeRatz/ROS-guide/ROS Topics/catkin_ws/install -G Unix Makefiles

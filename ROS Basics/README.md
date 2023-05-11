@@ -122,6 +122,13 @@ O argumento *<package_name>* é o nome do pacote que queremos criar e o
 outro argumento *<package_dependencies>* são os nomes dos outros ROS
 packages que queremos que este dependa (no nosso exemplo, queremos que
 nosso pacote “my_package” seja criado e dependa do pacote “roscpp”).
+Algo como a seguinte imagem deve aparecer no seu terminal:
+
+![image](./Images/creating_package.png)
+
+Para que possamos checar se nosso pacote foi criado com sucessso,
+podemos usar comandos ROS relacionados a pacotes. Por exemplo, digite no
+terminal:
 
 ## Tópicos
 

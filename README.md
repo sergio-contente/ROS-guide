@@ -1,7 +1,7 @@
 README
 ================
 Sergio Contente
-11/05/2023
+2023-05-11
 
 # :sos: ROS Guide :robot:
 
@@ -23,8 +23,8 @@ geração das referências bibliográficas através de BibTeX.
 # :open_file_folder: Estrutura dos Arquivos
 
 - ROS-Guide: raíz do repositório
-  - :file_folder: :one: ROS Basics: aborda questões relacionadas ao
-    básico de ROS, perfeito para iniciantes.
+  - :seedling: ROS Basics: aborda questões relacionadas ao básico de
+    ROS, perfeito para iniciantes.
 
 # Bibliografia
 

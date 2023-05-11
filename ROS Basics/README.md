@@ -198,8 +198,239 @@ variação do catkin_make:
 ```
 
 Esse comando vai compilar apenas os pacotes escpeficiados nos argumentos
-e suas dependências. \## Tópicos A primeira coisa que se é necessária
-para aprender a trabalhar com ROS consiste em entender como funcionam os
-**tópicos**. ROS lida com todos os seus sistemas de comunicação através
-de tópicos, desde os mais simples até os mais complexos, como Actions e
-Services por exemplo.
+e suas dependências.
+
+# Meu primeiro programa ROS
+
+Nesse ponto, você já deve ter o seu primeiro pacote criado, agora vamos
+para coisas mais legais. Dentro do seu diretório *src/* no pacote
+*my_package* você vai colocar os arquivos em C++/Python a serem
+executados. Para esse guia, vou usar C++ deliberadamente. Então vá lá e
+crie um arquivo chamado: “first_ros_program.cpp”. Edite esse arquivo e
+coloque o seguinte código nele:
+
+``` cpp
+  #include <ros/ros.h>
+//Aqui estamos incluindo todos os headers necessários para as funcionalidades mais comuns e essenciais de um sistema ROS
+//Sempre que criamos um arquivo C++, devemos adicionar esse include.
+
+int main(int argc, char** argv) { //Começamos nossa rotina principal de um programa em C++
+
+    ros::init(argc, argv, "My_Node"); //Iniciamos nosso ROS node chamado "My_Node"
+    ros::NodeHandle nh; //Criamos um handler para o node. Esse handler vai na verdade fazer a iniciação do node
+    ROS_INFO("Parabens! Se voce esta lendo isso eh porque conseguiu rodar seu primeiro programa ROS."); //Equivale à função print em ROS.
+    ros::spinOnce(); //Chamar esse método aqui não é necessário para esse exemplo básico em específico porque não estamos recebendo nenhum callback.
+        //Entretanto, se você tivesse criado um subscriber nesse programa e não chamasse essa função, seus callbacks não seriam chamados nem atualizados, então é de boa prática.
+    return 0; //Fim do programa
+}
+
+```
+
+Após isso, crie seu diretório *launch/* dentro do mesmo package. Esse
+diretório, como dito antes, guardará nossas launch files para executar
+nossos programas. Para tal faça os seguinte comando no terminal:
+
+``` bash
+  roscd my_package
+  mkdir launch
+```
+
+Você também pode fazer isso por interface gráfica da sua IDE favorita.
+Aproveite e cria um arquivo chamado “first_launch_file.launch” dentro
+dessa pasta. Sua árvora de arquivos deve estar parecida com o seguinte:
+
+![image](./Images/struct_first_program.png)
+
+E então edite a launh file para que possamos executar nosso código da
+seguinte maneira:
+
+``` xml
+  <launch>
+    <!-- My Package launch file -->
+    <node pkg="my_package" type="first_ros_program" name="My_Node"  output="screen">
+    </node>
+  </launch>
+```
+
+**Lembre-se, o executável (nosso arquivo cpp) deve ser referenciado em
+*type*. Portanto, se você nomeou seu .cpp com outro nome, altere lá
+também**.
+
+## Gerando nosso executável
+
+Para que possamos executar nosso programa, devemos alterar a nossa
+CMakeLists.txt a partir do arquivo C++ que acabamos de criar. Para tal,
+vamos editar o arquivo CmakeLists.txt dentro da pasta do nosso package
+*my_package*. Procure dentro do arquivo a seção escrita como BUILD (em
+comentários) e adicione no fim dela o seguinte código:
+
+``` txt
+  add_executable(first_ros_program src/first_ros_program.cpp)
+  add_dependencies(first_ros_program ${first_ros_program_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+  target_link_libraries(first_ros_program
+    ${catkin_LIBRARIES}
+  )
+```
+
+## Compilando e dando launch
+
+Agora que modificamos nossa Make file (CMake), temos que compilar o
+nosso package novamente através do comando catkin_make. Lembre-se de
+estar dentro da workspace para isso.
+
+Dentro da catkin_ws, dê o seguinte comando:
+
+``` bash
+  $ catkin_make
+```
+
+Algo no seu terminal deve estar diferente da outra vez que você executou
+o mesmo. Na verdade se você reparar, o executável CXX (C++) foi
+buildado, linkado e agora podemos dar launch no nosso programa, também
+chamado de ROS node.
+
+![image](./Images/cmake_with_target.png)
+
+Finalmente, vamos dar launch:
+
+``` bash
+  roslaunch my_package first_launch_file.launch
+```
+
+**Se você deu um nome alternativo para sua launch file, faça as devidas
+alterações para funcionar**. E então a saída espera é a seguinte:
+
+![image](./Images/launch_node_successfuly.png)
+
+## Caso não dê certo
+
+Às vezes, ROS não detecta novos pacotes recém-criados e não será capaz
+de dar roslaunch. Nesse caso, você pode forçar o ROS a atualziar sua
+lista de packages com o comando:
+
+``` bash
+  rospack profile
+```
+
+# Entendendo os códigos apresentados
+
+## Primeiro programa ROS
+
+Em relação ao nosso programa principal, comentei linha por linha
+explicando o que significa cada coisa. Acredito que seja o jeito mais
+simples de se entender de fato o que está acontecendo por baixo dos
+panos.
+
+## Alterações na CMakeLists
+
+> add_executable(first_ros_program src/first_ros_program.cpp)
+
+Essa linha gera um executável a partir do seu arquivo .cpp, localizado
+dentro da pasta *src/* no seu package. Esse executável vai ser colocado
+por padrão dentro do diretório do seu pacote do seu espaço devel (esse
+último está localizado por default em catkin_ws/devel/lib/).
+
+> add_dependencies(first_ros_program
+> \${first_ros_program_EXPORTED_TARGETS} \${catkin_EXPORTED_TARGETS})
+
+Essa linha adiciona todas as dependências do target do CMake do nosso
+executável. É usado basicamente para permitir que o CMake compile
+corretamente o pacote, assegurando-se de que as dependências dele
+estarão sendo respeitadas.
+
+> target_link_libraries(first_ros_program \${catkin_LIBRARIES} )
+
+Essa linha especifica as bibliotecas a serem usadas quando linkamos um
+determinado target. Neste caso, ele indica que vamos usar as bibliotecas
+catkin quando formos linkar nosso executável.
+
+# ROS Nodes
+
+Vamos listar os nodes ativos após darmos launch. Para isso, abra um novo
+terminal e rode o seguinte comando:
+
+``` bash
+  rosnode list
+```
+
+… UÉ?! Cadê nosso node “My_Node” na saída do terminal? Isso acontece
+porque um node é encerrado assim que um programa C++ termina. Vamos
+deixar nosso node rodando em um looping para consertar isso:
+
+``` cpp
+  #include <ros/ros.h>
+//Aqui estamos incluindo todos os headers necessários para as funcionalidades mais comuns e essenciais de um sistema ROS
+//Sempre que criamos um arquivo C++, devemos adicionar esse include.
+
+int main(int argc, char** argv) { //Começamos nossa rotina principal de um programa em C++
+
+    ros::init(argc, argv, "My_Node"); //Iniciamos nosso ROS node chamado "My_Node"
+    ros::NodeHandle nh; //Criamos um handler para o node. Esse handler vai na verdade fazer a iniciação do node
+    ros::Rate loop_rate(2); // Criamos um ojeto Rate de frequência 2 Hz
+        while (ros::ok()) // Loop infinito até Ctrl+C
+    {
+            ROS_INFO("Parabens! Se voce esta lendo isso eh porque conseguiu rodar seu primeiro programa ROS."); //Equivale à função print em ROS.
+            ros::spinOnce(); //Chamar esse método aqui não é necessário para esse exemplo básico em específico porque não estamos recebendo nenhum callback.
+            //Entretanto, se você tivesse criado um subscriber nesse programa e não chamasse essa função, seus callbacks não seriam chamados nem atualizados, então é de boa prática.
+            loop_rate.sleep(); // Nós paramos o tempo necessário para que a frequência fixada antes seja mantida/respeitada.
+        }
+
+        return 0; //Fim do programa
+}
+
+//Esse programa cria um loop infinito que se repete 2 vezes por segundo (2Hz) até CTRL+C
+```
+
+*Todas alterações foram comentadas linha-a-linha, para facilitar o
+entendimento do que está acontecendo no código*
+
+Compile novamente seu programa com o catkin_make e dê um launch. Após
+isso execute em outro terminal:
+
+``` bash
+  $ rosnode list
+```
+
+Então, a saída esperada é a seguinte:
+![image](./Images/rosnode_list.png)
+
+Podemos também extrair informações mais profundas de cada node através
+do comando:
+
+``` bash
+  $ rosnode info <node_name>
+```
+
+No nosso caso, *node_name* é substituído por “My_Node”. Então temos:
+![image](./Images/ros_node_info.png)
+
+# ROS Core
+
+Para que todos os nossos nodes funcionem de maneira adequada, nós
+precisamos de um ROS Core rodando primeiramente. Ele é o processo
+principal que gerencia todo o nosso sistema ROS. Você vai precisar ter
+um ROS Corando para trabalhar com ROS. É possível dar launch
+individualmente em um ROS core com o comando:
+
+``` bash
+  $ roscore
+```
+
+Mas assim que você usa o roslaunch, ele já faz esse trabalho para você.
+Abaixo está um diagrama que exemplifica um pouco esse conceit abstrato:
+![image](./Images/roscore.png) \# Variáveis de Ambiente ROS usa um
+conjunto de variáveis de ambiente do Linux para que funcione
+propriamente. Você pode checar essas variáveis através do comando:
+
+``` bash
+  $ export | grep ROS
+```
+
+![image](./Images/environment_variables.png)
+
+Sendo as mais importantes:
+
+- ROS_MASTER_URI -\> Contém a URL onde o ROS Core está sendo executado.
+  Usualmente seu próprio computador (localhost).
+- ROS_PACKAGE_PATH -\> Contém os caminhos do seu Disco Rígo onde ROS tem
+  pacotes.

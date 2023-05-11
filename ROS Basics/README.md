@@ -11,7 +11,7 @@ complicações futuras por falta de embasamento. Com isso, a ideia deste
 módulo é nivelar todos que já tiveram algum tipo de contato com a
 tencologia ou nunca nem mexeram na mesma.
 
-## O que é ROS?
+# O que é ROS?
 
 Do próprio site oficial temos uma definição: “The Robot Operating System
 (ROS) is a set of software libraries and tools that help you build robot
@@ -21,7 +21,7 @@ project. And it’s all open source”. Mas isso não ajuda muito a entender,
 certo? Para isso vamos investigar alguns conceitos para entender o que
 essa frase quer dizer.
 
-# Pacotes/Packages
+## Pacotes/Packages
 
 ROS usa pacotes para organizar seus programas. Você pode pensar sobre um
 pacote como sendo todos os arquivos que aquele programa ROS específico
@@ -44,7 +44,7 @@ seguinte maneira:
 Este comando irá te levar ao caminho onde o pacote chamado
 *package_name* está localizado.
 
-# Launch files
+## Launch files
 
 Para exectuar programas, ROS utiliza determinados tipos de arquivos
 específicos chamados de “launch files”.
@@ -80,7 +80,7 @@ Algumas outras tags são referentes a parâmetros de configuração. Por
 hora, não se preocupe com essas tags extras e procure entender as que
 foram mencionadas agora.
 
-## Criando um package
+# Criando um package
 
 Até agora, checamos a estrutura de um pacote ROS já feito. Mas vamos
 criar um novo.
@@ -130,9 +130,76 @@ Para que possamos checar se nosso pacote foi criado com sucessso,
 podemos usar comandos ROS relacionados a pacotes. Por exemplo, digite no
 terminal:
 
-## Tópicos
+``` bash
+  $ rospack list
+```
 
-A primeira coisa que se é necessária para aprender a trabalhar com ROS
-consiste em entender como funcionam os **tópicos**. ROS lida com todos
-os seus sistemas de comunicação através de tópicos, desde os mais
-simples até os mais complexos, como Actions e Services por exemplo.
+Então, ele deverá responder algo como:
+![image](./Images/rospack_list.png)
+
+Isso significa que todos esses pactores nativos do ROS (vem com ele ao
+instalar o desktop-full) foram criados junstamente com o nosso pacote
+*my_package*. O jeto mais fácil de se conferir que ele foi criado
+corretamente é vendo se os arquivos padrões dele estão no nosso
+diretório principal:
+
+![image](./Images/package_struct.png)
+
+## Compilando um package
+
+Após criarmos nosso pacote, naturalmente será necessário compilá-lo.
+Existem diferentes métodos para fazer isso mas os que mais são comuns
+são esses:
+
+- catkin_make
+- catkin build
+
+Neste tutorial usarei o “catkin_make”, por ser uma das opções mais
+populares e portanto encaixa-se no propósito de um guia básico. Mas é
+bom saber que o “catkin build” é bem mais eficiente por usar
+paralelismo.
+
+**ATENÇÃO! AGORA É UM MOMENTO DE EXTREMO CUIDADO**
+
+> Para que o comando compile o seu diretório *src*, ele precisa ser
+> executado no seu workspace catkin - ou seja, no *catkin_ws* no nosso
+> exemplo - para funcionar.
+
+Isso é obrigatório, tente compilar em outro diretório e não vai
+funcionar. Então dentro da sua “catkin_ws”, execute:
+
+``` bash
+  cd ../../catkin_ws
+  catkin_make
+```
+
+O terminal vai dar algumas saídas do tipo:
+
+![image](./Images/catkin_make.png)
+
+Após compilar, é muito importante dar um *source* no seu workspace para
+que seja possível atualizar as últimas mudanças feitas pós-compilação no
+ROS.
+
+``` bash
+  source devel/setup.bash
+```
+
+## Compilando packages individualmente
+
+Às vezes em projetos grandes, você não quer compilar todos os seus
+pacotes a todo momento dado que isso levaria uma grande quantidade de
+tempo gasta inutilmente. Normalmente, você vai querer compilar apenas os
+pacotes que sofreram algum tipo de modificação. Para isso, existe uma
+variação do catkin_make:
+
+``` bash
+  catkin_make --only-pkg-with-deps <package_name>
+```
+
+Esse comando vai compilar apenas os pacotes escpeficiados nos argumentos
+e suas dependências. \## Tópicos A primeira coisa que se é necessária
+para aprender a trabalhar com ROS consiste em entender como funcionam os
+**tópicos**. ROS lida com todos os seus sistemas de comunicação através
+de tópicos, desde os mais simples até os mais complexos, como Actions e
+Services por exemplo.

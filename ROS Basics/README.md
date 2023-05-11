@@ -11,7 +11,7 @@ complicações futuras por falta de embasamento. Com isso, a ideia deste
 módulo é nivelar todos que já tiveram algum tipo de contato com a
 tencologia ou nunca nem mexeram na mesma.
 
-# O que é ROS?
+# :robot: O que é ROS?
 
 Do próprio site oficial temos uma definição: “The Robot Operating System
 (ROS) is a set of software libraries and tools that help you build robot
@@ -21,7 +21,7 @@ project. And it’s all open source”. Mas isso não ajuda muito a entender,
 certo? Para isso vamos investigar alguns conceitos para entender o que
 essa frase quer dizer.
 
-## Pacotes/Packages
+## :package: Pacotes/Packages
 
 ROS usa pacotes para organizar seus programas. Você pode pensar sobre um
 pacote como sendo todos os arquivos que aquele programa ROS específico
@@ -44,7 +44,7 @@ seguinte maneira:
 Este comando irá te levar ao caminho onde o pacote chamado
 *package_name* está localizado.
 
-## Launch files
+## :rocket: Launch files
 
 Para exectuar programas, ROS utiliza determinados tipos de arquivos
 específicos chamados de “launch files”.
@@ -80,7 +80,7 @@ Algumas outras tags são referentes a parâmetros de configuração. Por
 hora, não se preocupe com essas tags extras e procure entender as que
 foram mencionadas agora.
 
-# Criando um package
+# :inbox_tray: Criando um package
 
 Até agora, checamos a estrutura de um pacote ROS já feito. Mas vamos
 criar um novo.
@@ -145,7 +145,7 @@ diretório principal:
 
 ![image](./Images/package_struct.png)
 
-## Compilando um package
+## :outbox_tray: Compilando um package
 
 Após criarmos nosso pacote, naturalmente será necessário compilá-lo.
 Existem diferentes métodos para fazer isso mas os que mais são comuns
@@ -185,7 +185,7 @@ ROS.
   source devel/setup.bash
 ```
 
-## Compilando packages individualmente
+## :outbox_tray: Compilando packages individualmente
 
 Às vezes em projetos grandes, você não quer compilar todos os seus
 pacotes a todo momento dado que isso levaria uma grande quantidade de
@@ -200,7 +200,7 @@ variação do catkin_make:
 Esse comando vai compilar apenas os pacotes escpeficiados nos argumentos
 e suas dependências.
 
-# Meu primeiro programa ROS
+# :one: Meu primeiro programa ROS
 
 Nesse ponto, você já deve ter o seu primeiro pacote criado, agora vamos
 para coisas mais legais. Dentro do seu diretório *src/* no pacote
@@ -256,7 +256,7 @@ seguinte maneira:
 *type*. Portanto, se você nomeou seu .cpp com outro nome, altere lá
 também**.
 
-## Gerando nosso executável
+## :zap: Gerando nosso executável
 
 Para que possamos executar nosso programa, devemos alterar a nossa
 CMakeLists.txt a partir do arquivo C++ que acabamos de criar. Para tal,
@@ -272,7 +272,7 @@ comentários) e adicione no fim dela o seguinte código:
   )
 ```
 
-## Compilando e dando launch
+## :tornado: Compilando e dando launch
 
 Agora que modificamos nossa Make file (CMake), temos que compilar o
 nosso package novamente através do comando catkin_make. Lembre-se de
@@ -302,7 +302,7 @@ alterações para funcionar**. E então a saída espera é a seguinte:
 
 ![image](./Images/launch_node_successfuly.png)
 
-## Caso não dê certo
+## :persevere: Caso não dê certo
 
 Às vezes, ROS não detecta novos pacotes recém-criados e não será capaz
 de dar roslaunch. Nesse caso, você pode forçar o ROS a atualziar sua
@@ -312,7 +312,7 @@ lista de packages com o comando:
   rospack profile
 ```
 
-# Entendendo os códigos apresentados
+# :teacher: Entendendo os códigos apresentados
 
 ## Primeiro programa ROS
 
@@ -344,7 +344,7 @@ Essa linha especifica as bibliotecas a serem usadas quando linkamos um
 determinado target. Neste caso, ele indica que vamos usar as bibliotecas
 catkin quando formos linkar nosso executável.
 
-# ROS Nodes
+# :volleyball: ROS Nodes
 
 Vamos listar os nodes ativos após darmos launch. Para isso, abra um novo
 terminal e rode o seguinte comando:
@@ -404,7 +404,7 @@ do comando:
 No nosso caso, *node_name* é substituído por “My_Node”. Então temos:
 ![image](./Images/ros_node_info.png)
 
-# ROS Core
+# :electron: ROS Core
 
 Para que todos os nossos nodes funcionem de maneira adequada, nós
 precisamos de um ROS Core rodando primeiramente. Ele é o processo
@@ -418,8 +418,11 @@ individualmente em um ROS core com o comando:
 
 Mas assim que você usa o roslaunch, ele já faz esse trabalho para você.
 Abaixo está um diagrama que exemplifica um pouco esse conceit abstrato:
-![image](./Images/roscore.png) \# Variáveis de Ambiente ROS usa um
-conjunto de variáveis de ambiente do Linux para que funcione
+![image](./Images/roscore.png)
+
+# :blossom: Variáveis de Ambiente
+
+ROS usa um conjunto de variáveis de ambiente do Linux para que funcione
 propriamente. Você pode checar essas variáveis através do comando:
 
 ``` bash
@@ -434,3 +437,9 @@ Sendo as mais importantes:
   Usualmente seu próprio computador (localhost).
 - ROS_PACKAGE_PATH -\> Contém os caminhos do seu Disco Rígo onde ROS tem
   pacotes.
+
+# :fast_forward: Conclusão
+
+Agora você sabe o básico do funcionamento de ROS. Vá para o próximo guia
+para se aprofundar cada vez mais nesse framework extremamente útil no
+mundo da robótica.

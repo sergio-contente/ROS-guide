@@ -492,6 +492,19 @@ rosgraph_msgs_generate_messages_py/fast:
 	$(MAKE) -f publisher_pkg/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make publisher_pkg/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
 .PHONY : rosgraph_msgs_generate_messages_py/fast
 
+#=============================================================================
+# Target rules for targets named first_subscriber
+
+# Build rule for target.
+first_subscriber: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 first_subscriber
+.PHONY : first_subscriber
+
+# fast build rule for target.
+first_subscriber/fast:
+	$(MAKE) -f subscriber_pkg/CMakeFiles/first_subscriber.dir/build.make subscriber_pkg/CMakeFiles/first_subscriber.dir/build
+.PHONY : first_subscriber/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -530,6 +543,7 @@ help:
 	@echo "... rosgraph_msgs_generate_messages_lisp"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... rosgraph_msgs_generate_messages_py"
+	@echo "... first_subscriber"
 .PHONY : help
 
 

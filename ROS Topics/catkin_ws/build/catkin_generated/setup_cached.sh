@@ -7,5 +7,9 @@
 # new environment variables
 
 # modified environment variables
-export PKG_CONFIG_PATH='/home/contente/Desktop/ThundeRatz/ROS-guide/ROS Basics/catkin_ws/devel/lib/pkgconfig:/opt/ros/noetic/lib/pkgconfig'
+export CMAKE_PREFIX_PATH="/home/contente/Desktop/ThundeRatz/ROS-guide/ROS Topics/catkin_ws/devel:$CMAKE_PREFIX_PATH"
+export LD_LIBRARY_PATH="/home/contente/Desktop/ThundeRatz/ROS-guide/ROS Topics/catkin_ws/devel/lib:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="/home/contente/Desktop/ThundeRatz/ROS-guide/ROS Topics/catkin_ws/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD='/home/contente/Desktop/ThundeRatz/ROS-guide/ROS Topics/catkin_ws/build'
+export ROSLISP_PACKAGE_DIRECTORIES='/home/contente/Desktop/ThundeRatz/ROS-guide/ROS Topics/catkin_ws/devel/share/common-lisp'
+export ROS_PACKAGE_PATH="/home/contente/Desktop/ThundeRatz/ROS-guide/ROS Topics/catkin_ws/src:$ROS_PACKAGE_PATH"

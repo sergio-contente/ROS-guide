@@ -15,9 +15,13 @@ set(CMAKE_MAKEFILE_DEPENDS
   "catkin_generated/order_packages.cmake"
   "publisher_pkg/catkin_generated/ordered_paths.cmake"
   "publisher_pkg/catkin_generated/package.cmake"
+  "subscriber_pkg/catkin_generated/ordered_paths.cmake"
+  "subscriber_pkg/catkin_generated/package.cmake"
   "/home/contente/Desktop/ThundeRatz/ROS-guide/ROS Topics/catkin_ws/src/CMakeLists.txt"
   "/home/contente/Desktop/ThundeRatz/ROS-guide/ROS Topics/catkin_ws/src/publisher_pkg/CMakeLists.txt"
   "/home/contente/Desktop/ThundeRatz/ROS-guide/ROS Topics/catkin_ws/src/publisher_pkg/package.xml"
+  "/home/contente/Desktop/ThundeRatz/ROS-guide/ROS Topics/catkin_ws/src/subscriber_pkg/CMakeLists.txt"
+  "/home/contente/Desktop/ThundeRatz/ROS-guide/ROS Topics/catkin_ws/src/subscriber_pkg/package.xml"
   "/opt/ros/noetic/share/catkin/cmake/all.cmake"
   "/opt/ros/noetic/share/catkin/cmake/assert.cmake"
   "/opt/ros/noetic/share/catkin/cmake/atomic_configure_file.cmake"
@@ -178,6 +182,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "gtest/googlemock/CMakeFiles/CMakeDirectoryInformation.cmake"
   "gtest/googletest/CMakeFiles/CMakeDirectoryInformation.cmake"
   "publisher_pkg/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "subscriber_pkg/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -207,4 +212,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "publisher_pkg/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/DependInfo.cmake"
   "publisher_pkg/CMakeFiles/roscpp_generate_messages_lisp.dir/DependInfo.cmake"
   "publisher_pkg/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/DependInfo.cmake"
+  "subscriber_pkg/CMakeFiles/first_subscriber.dir/DependInfo.cmake"
   )

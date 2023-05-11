@@ -23,7 +23,7 @@ entender o que essa frase quer dizer.
 
 # Pacotes/Packages
 
-ROS use pacotes para organizar seus programas. Você pode pensar sobre um
+ROS usa pacotes para organizar seus programas. Você pode pensar sobre um
 pacote como sendo todos os arquivos que aquele programa ROS específico
 contém. Esses arquivos são organizados na seguinte estrutura:
 
@@ -53,26 +53,28 @@ Usando a launchfile file da odometria do Perse como exemplo, vamos ver
 como o arquivo está estruturado:
 
 ``` xml
-<launch>
-  <rosparam command="load" file="$(find perse)/config/odometry_variables.yaml"/>
-
-  <node pkg="perse" type="perse" name="perse_node" output="screen"/>
-
-  <!-- Dynamic update of some parameters -->
-  <node pkg="rqt_reconfigure" type ="rqt_reconfigure" name="dynamic_reconfigure" output="screen"/>
-
-</launch>
+  <launch>
+    <rosparam command="load" file="$(find perse)/config/odometry_variables.yaml"/>
+  
+    <node pkg="perse" type="perse" name="perse_node" output="screen"/>
+  
+    <!-- Dynamic update of some parameters -->
+    <node pkg="rqt_reconfigure" type ="rqt_reconfigure" name="dynamic_reconfigure"    output="screen"/>
+  </launch>
 ```
 
 Launch files são contidas dentro de uma tag <launch>. Nessa tag, você
-pode ver uma tag <node>, onde especifica alguns parâmetros: -
-pkg=“perse”: Refere-se ao nome do pacote que contem o código ROS a ser
-executado. - type=“perse”: Nome do arquivo (podendo ser tanto Python ou
-C++) que queremos executar. Deve-se ter um executável com o mesmo nome -
-veremos melhor na parte de CMakeLists. - name=“perse_node”: Nome do ROS
-node (em breve, você entenderá o que é isso) que queremos dar launch. -
-output=“screen”: Através de qual canal de saída você quer printar o
-output do seu programa.
+pode ver uma tag <node>, onde especifica alguns parâmetros:
+
+- pkg=“perse”: Refere-se ao nome do pacote que contem o código ROS a ser
+  executado.
+- type=“perse”: Nome do arquivo (podendo ser tanto Python ou C++) que
+  queremos executar. Deve-se ter um executável com o mesmo nome -
+  veremos melhor na parte de CMakeLists.
+- name=“perse_node”: Nome do ROS node (em breve, você entenderá o que é
+  isso) que queremos dar launch.
+- output=“screen”: Através de qual canal de saída você quer printar o
+  output do seu programa.
 
   Algumas outras tags são referentes a parâmetros de configuração. Por
 hora, não se preocupe com essas tags extras e procure entender as que

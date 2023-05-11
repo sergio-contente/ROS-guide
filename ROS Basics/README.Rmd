@@ -1,7 +1,9 @@
-README
-================
-Sergio Contente
-2023-05-11
+---
+title: "README"
+author: "Sergio Contente"
+date: "`r Sys.Date()`"
+output: github_document
+---
 
 # :seedling: ROS Basics - Conceitos Fundamentais
 
@@ -13,13 +15,13 @@ tencologia ou nunca nem mexeram na mesma.
 
 ## O que é ROS?
 
-Do próprio site oficial temos uma definição: “The Robot Operating System
-(ROS) is a set of software libraries and tools that help you build robot
-applications. From drivers to state-of-the-art algorithms, and with
-powerful developer tools, ROS has what you need for your next robotics
-project. And it’s all open source”. Mas isso não ajuda muito a entender,
-certo? Para isso vamos investigar alguns conceitos para entender o que
-essa frase quer dizer.
+Do próprio site oficial temos uma definição: “The Robot Operating
+System (ROS) is a set of software libraries and tools that help you
+build robot applications. From drivers to state-of-the-art algorithms,
+and with powerful developer tools, ROS has what you need for your next
+robotics project. And it’s all open source”. Mas isso não ajuda muito a
+entender, certo? Para isso vamos investigar alguns conceitos para
+entender o que essa frase quer dizer.
 
 # Pacotes/Packages
 
@@ -85,43 +87,32 @@ foram mencionadas agora.
 Até agora, checamos a estrutura de um pacote ROS já feito. Mas vamos
 criar um novo.
 
-Quando queremos criar pacotes, temos que trabalhar em um workspace/área
-de trabalho ROS específico/a. Esse workspace é chamado de **catkin
-workspace**, que é um diretório no seu disco rígio onde os pacotes ROS
-devem residir para que sejam usados. Usualmente, um diretório catkin
-workspace é chamado de *catkin_ws*.
+Quando queremos criar pacotes, temos que trabalhar em um
+workspace/área de trabalho ROS específico/a. Esse workspace é chamado de
+**catkin workspace**, que é um diretório no seu disco rígio onde os
+pacotes ROS devem residir para que sejam usados. Usualmente, um
+diretório catkin workspace é chamado de *catkin_ws*.
 
-Usando o terminal do seu computador, entre no workspace deste módulo.
-ele deve estar localizado em algo como:
+Usando o terminal do seu computador, entre no workspace deste módulo. ele deve estar localizado em algo como:
 
 > ../ROS-guide/ROS Basics/catkin_ws
 
-Dentro do workspace, existe um diretório chamado de **src**. Essa pasta
-*deve* conter todos os packages ROS criados. Então, entre nela usando o
-comando:
+Dentro do workspace, existe um diretório chamado de **src**. Essa pasta _deve_ conter todos os packages ROS criados. Então, entre nela usando o comando:
 
-``` bash
+```bash
   $ cd src/
 ```
-
-Para que seja possível criar nosso primeiro package, deve-se dar o
-seguinte comando no terminal:
-
-``` bash
+Para que seja possível criar nosso primeiro package, deve-se dar o seguinte comando no terminal:
+```bash
   $ catkin_create_pkg my_package roscpp
 ```
 
-Isso vai criar dentro do nosso diretório “src” um novo pacote com alguns
-arquivos nele. Vamos investigar este comando:
+Isso vai criar dentro do nosso diretório "src" um novo pacote com alguns arquivos nele. Vamos investigar este comando:
 
-``` bash
+```bash
   catkin_create_pkg <package_name> <package_dependecies>
 ```
-
-O argumento *<package_name>* é o nome do pacote que queremos criar e o
-outro argumento *<package_dependencies>* são os nomes dos outros ROS
-packages que queremos que este dependa (no nosso exemplo, queremos que
-nosso pacote “my_package” seja criado e dependa do pacote “roscpp”).
+O argumento *<package_name>* é o nome do pacote que queremos criar e o outro argumento *<package_dependencies>* são os nomes dos outros ROS packages que queremos que este dependa (no nosso exemplo, queremos que nosso pacote "my_package" seja criado e dependa do pacote "roscpp").
 
 ## Tópicos
 

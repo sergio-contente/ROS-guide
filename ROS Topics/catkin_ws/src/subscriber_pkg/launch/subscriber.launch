@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="subscriber_pkg" type="first_subscriber" name="topic_subscriber"  output="screen">
+    </node>
+</launch>

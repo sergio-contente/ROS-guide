@@ -60,7 +60,7 @@ Onde *<topic_name>* é o nosso "/counter". Temos o seguinte:
 
 Agora sim temos algo que está incrementando gradualmente. Do nosso código, percebemos que esse comando extrai o valor contido na mensagem pelo atributo "data" e cospe a informação no terminal.
 
-# Mensagens
+# :envelope: Mensagens
 
 Como dito anteriormente, tópicos lidam com informações através de mensagens. Existem diversos tipos de mensagens. No caso do nosso simples exemplo, o tipo de mensagem foi "std_msgs/Int32". Mas você pode ter vários outros e até criar o seu próprio tipo de mensagem - não é recomendado, use sempre mensagens ROS default quando possível.
 
@@ -87,7 +87,7 @@ Observamos que no caso da mensagem do nosso exemplo, ela tem apenas um atributo 
 
 Ou seja, ela pode ser quebrada em dois tipos de mensagens "geometry_msgs/Vector3" para as características linear e angular, e essas são compostas por mensagens do tipo "float64" com 3 atributos cada: "x", "y, e "z".
 
-# Subscribers
+# :eyeglasses: Subscribers
 
 Similarmente ao publisher, vamos compilar o executável presente no package do subscrbiber (*subscriber_pkg/*) e dar launch no node dele. Dentro da catkin workspace faça o seguinte comando:
 
@@ -111,10 +111,10 @@ Ainda rodando o node do subsciber, abra um outro terminal, entre na workspace e 
  
  Analise o código do nosso subscriber (cada linha foi comentada) e pense comigo: você basicamente criou um node subscriber que escuta a um determinado tópico "/counter" e a cada vez que ele lê algo (dada a frequência do nosso ros loop), ela faz algo - no caso é printar no terminal o valor da mensagem. Inicialmente, como nada havia sido publicado no tópico, ele não estava printando nada, mas a partir do momento que damos o comando de publicar o valor de "5" no tópico, a mensagem é recebida pelo subscriber e tratada na função definida pelo callback dele.
 
-# Misturando o Publisher com o Subscriber
+# :bowl_with_spoon: Misturando o Publisher com o Subscriber
 Uma coisa interessante a se fazer é juntar o que foi dado até agora para ver como as peças se encaixam nesse quebra-cabeça. Se você der launch no publisher e em seguida no subsciber, podemos ver que os dois se comunicam pelo tópico em comum "/counter". Em terminais diferentes dê o launch e veja que o subscriber está printando uma contagem incremental de 1 a cada 2 Hz! Incrível, não?
 
-# Mensagens customizadas
+# :customs: Mensagens customizadas
 
 Caso queiramos publicar uma mensagem que não seja do tipo Int32, quais tipos eu deveríamos usar? Bom, isso depende muito da sua aplicação, mas você pode encontrar todas as mensagens ROS através do comando:
 ```bash
@@ -123,7 +123,7 @@ Caso queiramos publicar uma mensagem que não seja do tipo Int32, quais tipos eu
 
 Caso nenhuma dessas te agrade, você podre *criar* um tipo de mensagem. Vamos lá.
 
-## Criando nossa mensagem própria
+## :godmode: Criando nossa mensagem própria
 
 Primeiramente, cria um diretório chamado "msg/" no seu package:
 ```bash
@@ -215,7 +215,7 @@ add_dependencies(first_subscriber subscriber_pkg_generate_messages_cpp)
 
 E porque você precisa adicionar essa linha extra "add_depedencies()". Bom, isso é feito para assegurar que todas as mensagens contidas no pacote (<package_name>) serão compiladas *antes* que nós criemos o nosso executável. Nesse caso, o executável *first_subscriber* usa a mensagem customizada que nós acabamos de criar: Pessoa.msg. Então, o que aconteceria se tentássemos buildar o executável antes de buildar a mensagem? Iria falhar, naturalmente. Mas com esse linha, você evita essa problema.
 
-## Dando launch no nosso node com mensagem customizada
+## :rocket: Dando launch no nosso node com mensagem customizada
 
 Agora que você preparou o terreno, a imagem a seguir mostra como está meu subscriber novo preparado para receber o tipo de mensagem criado por mim anteriormente:
 
@@ -233,6 +233,6 @@ Analisando agora a saída do nosso subscriber no nosso terminal onde ele está r
 
 ~~Daria para ajustar a quantidade de casas decimais do float~~
 
-# Conclusão
+# :pushpin: Conclusão
 
 Com o fim do módulo, você já deve entender como fazer Publisher e Subscriber básicos, o que significam tópicos em se tratando de ROS e mensagens. Também é capaz de criar seu próprio tipo de mensagem!

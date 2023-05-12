@@ -88,7 +88,7 @@ Agora sim temos algo que está incrementando gradualmente. Do nosso
 código, percebemos que esse comando extrai o valor contido na mensagem
 pelo atributo “data” e cospe a informação no terminal.
 
-# Mensagens
+# :envelope: Mensagens
 
 Como dito anteriormente, tópicos lidam com informações através de
 mensagens. Existem diversos tipos de mensagens. No caso do nosso simples
@@ -127,7 +127,7 @@ Ou seja, ela pode ser quebrada em dois tipos de mensagens
 essas são compostas por mensagens do tipo “float64” com 3 atributos
 cada: “x”, “y, e”z”.
 
-# Subscribers
+# :eyeglasses: Subscribers
 
 Similarmente ao publisher, vamos compilar o executável presente no
 package do subscrbiber (*subscriber_pkg/*) e dar launch no node dele.
@@ -171,7 +171,7 @@ momento que damos o comando de publicar o valor de “5” no tópico, a
 mensagem é recebida pelo subscriber e tratada na função definida pelo
 callback dele.
 
-# Misturando o Publisher com o Subscriber
+# :bowl_with_spoon: Misturando o Publisher com o Subscriber
 
 Uma coisa interessante a se fazer é juntar o que foi dado até agora para
 ver como as peças se encaixam nesse quebra-cabeça. Se você der launch no
@@ -180,7 +180,7 @@ comunicam pelo tópico em comum “/counter”. Em terminais diferentes dê o
 launch e veja que o subscriber está printando uma contagem incremental
 de 1 a cada 2 Hz! Incrível, não?
 
-# Mensagens customizadas
+# :customs: Mensagens customizadas
 
 Caso queiramos publicar uma mensagem que não seja do tipo Int32, quais
 tipos eu deveríamos usar? Bom, isso depende muito da sua aplicação, mas
@@ -193,7 +193,7 @@ você pode encontrar todas as mensagens ROS através do comando:
 Caso nenhuma dessas te agrade, você podre *criar* um tipo de mensagem.
 Vamos lá.
 
-## Criando nossa mensagem própria
+## :godmode: Criando nossa mensagem própria
 
 Primeiramente, cria um diretório chamado “msg/” no seu package:
 
@@ -314,7 +314,7 @@ aconteceria se tentássemos buildar o executável antes de buildar a
 mensagem? Iria falhar, naturalmente. Mas com esse linha, você evita essa
 problema.
 
-## Dando launch no nosso node com mensagem customizada
+## :rocket: Dando launch no nosso node com mensagem customizada
 
 Agora que você preparou o terreno, a imagem a seguir mostra como está
 meu subscriber novo preparado para receber o tipo de mensagem criado por
@@ -340,7 +340,7 @@ está rodando, podemos ver que nossa jornada foi bem sucedida!
 
 ~~Daria para ajustar a quantidade de casas decimais do float~~
 
-# Conclusão
+# :pushpin: Conclusão
 
 Com o fim do módulo, você já deve entender como fazer Publisher e
 Subscriber básicos, o que significam tópicos em se tratando de ROS e

@@ -10,21 +10,20 @@ Sergio Contente
 A principal motivação de desenvolver este repositório é o fato de poder
 documentar através de arquivos Markdown todo o conhecimento que adquiri
 durante meus anos na equipe ThundeRatz de robótica da Escola Politécnica
-da USP juntamente com o fato de poder injetar códigos em diversas
-linguagens com instruções de execução local para que aqueles que queiram
-ter o conhecimento acerda de Robot Operating System (ROS) o faça de
-maneira interativa e ativa (Prince 2004).
+da USP e também sanar a falta de fontes/recursos de aprenziado sobre Robot
+Operating System (ROS) para lusófonos.
 
-Além disso, todos os arquivos Markdown na verdade estão sendo gerados a
-partir do RStudio usando R no formato Rmd com o uso de algumas
-biblotecas que ajudam a facilitar a formatação geral do texto e a
-geração das referências bibliográficas através de BibTeX.
+Além disso, pelo fato da possibilidade se trabalhar com versionamento de código, esse repositório é pensado no ensinamento de conceitos
+através de práticas de aprendizado ativo (Prince 2004). Dessa forma, ao invés de consumir o conteúdo de maneira tradicional, o interessado irá compreender os
+conceitos ao passo que os aplica, retendo de maneira melhor o que cada um significa e sua respectiva aplicação.
+
 
 # :open_file_folder: Estrutura dos Arquivos
 
 - ROS-Guide: raíz do repositório
-  - :seedling: ROS Basics: aborda questões relacionadas ao básico de
-    ROS, perfeito para iniciantes.
+  - Nível iniciante:
+    - :seedling: ROS Basics: aborda questões relacionadas ao que são ROS packages, como estruturar um projeto ROS, o que são e como executar launch files.
+    - :herb: ROS Topics: aborda questões relacionadas ao que são mensagens, publishers e subscribers.
 
 # Bibliografia
 

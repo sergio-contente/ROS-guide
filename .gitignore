@@ -1,7 +1,7 @@
-.Rproj.user
-.Rhistory
-.RData
-.Ruserdata
-.Rmd
-.vscode
-.Rproj
+*.Rproj.user
+*.Rhistory
+*.RData
+*.Ruserdata
+*.Rmd
+*.vscode
+*.Rproj

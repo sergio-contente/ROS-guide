@@ -9,3 +9,35 @@ O Gazebo é o simulador padrão de ROS. Ele provê todas as informações que vo
 ## Construir um robô é caro
 
 Você não precisa testar seu software em um robô real para encontrar erros e ajustar parâmetros. Falhar em um robô simulado é mais rápido e mais barato.
+
+# Preparando a simulação
+
+Para que comecemos nosso tutorial de Gazebo, é necesário baixar alguns pacotes antes de rodar o código:
+
+```bash
+sudo apt-get update &&
+sudo apt install ros-noetic-dynamixel-sdk &&
+sudo apt install ros-noetic-turtlebot3-msgs &&
+sudo apt install ros-noetic-turtlebot3
+
+```
+
+## Simulando pela primeira vez
+
+Abra um terminal e insira o seguinte comando:
+
+```bash
+gazebo worlds/pioneer2dx.world
+```
+
+Essa nova janela deve aparecer:
+
+![first_sim](images/first_sim.png)
+
+Parabéns! Você fez o seu primeiro launch de gazebo.
+
+## World
+
+O **world** (mundo) é o ambiente completo da simulação. Ele contém tudo e está descrito em um arquivo **.world**. Esse arquivo é formatado usando *SDF (Simulation Description Format)*. Você pode observar todos os componentes do mundo através do menu à esquerda, na aba "World":
+
+![world_tab](images/world_tab.png)

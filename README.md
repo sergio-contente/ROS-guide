@@ -10,7 +10,7 @@ Sergio Contente
 A principal motivação de desenvolver este repositório é o fato de poder
 documentar através de arquivos Markdown todo o conhecimento que adquiri
 durante meus anos na equipe ThundeRatz de robótica da Escola Politécnica
-da USP e também sanar a falta de fontes/recursos de aprenziado sobre Robot
+da USP e também sanar a falta de fontes/recursos de aprendizado sobre Robot
 Operating System (ROS) para lusófonos de maneira prática, rápida e gratuita.
 
 Além disso, pelo fato da possibilidade de se trabalhar com versionamento de código, esse repositório é pensado no ensinamento de conceitos
